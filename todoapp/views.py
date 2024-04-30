@@ -167,8 +167,8 @@ class ProjectTitleView(View):#view for editing ptoject title
         project = get_object_or_404(Project, pk=project_id)
         new_title = request.POST.get('title')
         project.title = new_title
-        project.save()
-        return redirect('project_detail', pk=project_id)    
+        project.save() 
+        return redirect("index") 
      
  
 
