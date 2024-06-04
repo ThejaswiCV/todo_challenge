@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.views.generic import View,CreateView,FormView,ListView,DetailView
 from todoapp.forms import UserForm,LoginForm,ProjectForm,TodoForm
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.models import User
 from todoapp.models import Project,Todo
 from django.urls import reverse
 from django.contrib import messages
@@ -22,13 +23,14 @@ def signin_required(fn):
 
 
 class SignUpView(CreateView):#view for signup
-   template_name="register.html"
-   form_class=UserForm
-   
-   def get_success_url(self):
-      return reverse('sign_up')
-  
-  
+    template_name="register.html"
+    form_class=UserForm
+
+
+    def get_success_url(self):
+        return reverse('sign_up')
+
+
 class signInView(FormView): #view for login
    template_name="login.html"
    form_class=LoginForm
